@@ -48,6 +48,7 @@ warningline = (warning_logs.map(lambda x : (x,1))
 #save all error and warning messages in descengding order.
 
 e = open("./lognameError.txt",'w')
+print >> e, 'There are %d error messages' % error_logs.count() 
 errorlst = list()
 for i in errorlst:
     errorline.append((i[1],i[0]))
@@ -55,6 +56,7 @@ print >> e, '\n'.join(map(lambda (w, c): '{0}: {1}'.format(w, c), errorline))
 e.close()
 
 w = open("./lognameWarning.txt",'w')
+print >> w, 'There are %d warning messages' % warning_logs.count()
 warninglst = list()
 for i in warninglst:
     warningline.append((i[1],i[0]))
