@@ -24,7 +24,7 @@ def parseLogs():
         access_logs = parsed_logs.filter(lambda s: s[1] == 1).map(lambda s: s[0]).cache()
         failed_logs = parsed_logs.filter(lambda s: s[1] == 0).map(lambda s: s[0]).cache()
         print 'Read %d messages, successfully parsed %d messages, failed to parse %d messages' % (parsed_logs.count(), access_logs.count(), failed_logs.count())
-        return parsed_logs, access_logs, failed_logs,
+        return parsed_logs, access_logs, failed_logs
 parsed_logs, access_logs, failed_logs = parseLogs()
 
 error_logs = access_logs.map(lambda log:log.mainbody).filter(lambda s : "ERROR" in s).cache()
